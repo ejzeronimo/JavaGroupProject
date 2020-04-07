@@ -1,0 +1,42 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - windowDriver",
+            "request": "launch",
+            "mainClass": "com.windowDriver",
+            "projectName": "JavaGroupProject_8682b9c2"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - driver",
+            "request": "launch",
+            "mainClass": "com.driver",
+            "projectName": "JavaGroupProject_8682b9c2"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - First",
+            "request": "launch",
+            "mainClass": "First",
+            "projectName": "JavaGroupProject_8682b9c2"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-testClass<JavaGroupProject_8682b9c2>",
+            "request": "launch",
+            "mainClass": "testClass",
+            "projectName": "JavaGroupProject_8682b9c2"
+        }
+    ]
+}
