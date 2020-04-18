@@ -1,6 +1,7 @@
 package com;
 
 import com.maze.Maze;
+import com.maze.MazeTile;
 
 //The main controller for the entire game
 public class GameDriver 
@@ -15,7 +16,7 @@ public class GameDriver
 
         // Build maze
         Maze maze = new Maze(10, 10);
-        //MazeTile.printToConsole(maze);
+        MazeTile.printToConsole(maze);
 
     }
 }

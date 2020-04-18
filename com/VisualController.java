@@ -2,12 +2,13 @@ package com;
 
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 
 //the controll for the actual looks of the GUI
 public class VisualController 
 {
     //the vusal aspects of the window
-    JFrame frame;
+    Frame frame;
     //the parameters
     String name;
     int width;
@@ -22,10 +23,17 @@ public class VisualController
 
     public void createWindow()
     {
-        frame = new JFrame(this.name);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(this.width, this.height));
-        frame.pack();
+        frame = new Frame(this.name);
+        frame.setSize(this.width,this.height);
+        frame.setLayout(null);
+        frame.addWindowListener(new WindowAdapter()
+         {
+            public void windowClosing(WindowEvent windowEvent)
+            {
+               System.exit(0);
+            }        
+         });  
+
         frame.setVisible(true);
     }
     

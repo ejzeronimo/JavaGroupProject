@@ -232,7 +232,6 @@ public class Maze {
             }
         }
 
-        // TODO: COLORING TILES FOR DEBUGGING
         // Give a color to each of the correct path tiles
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
