@@ -1,4 +1,4 @@
-package com;
+package com.maze;
 
 import java.util.ArrayList;
 import java.util.Random;

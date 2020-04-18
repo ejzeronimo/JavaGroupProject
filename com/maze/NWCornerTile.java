@@ -1,11 +1,12 @@
-package com;
+package com.maze;
 
-public class SWCornerTile extends MazeTile{
-    public SWCornerTile() {
-        this.type = "SW";
+public class NWCornerTile extends MazeTile{
+
+    public NWCornerTile() {
+        this.type = "NW";
         this.ePath = true;
-        this.sPath = false;
-        this.nPath = true;
+        this.sPath = true;
+        this.nPath = false;
         this.wPath = false;
     }
 

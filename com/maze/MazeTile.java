@@ -1,4 +1,4 @@
-package com;
+package com.maze;
 
 public abstract class MazeTile {
     String type;

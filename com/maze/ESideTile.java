@@ -1,12 +1,22 @@
-package com;
+package com.maze;
 
-public class CenterTile extends MazeTile{
-    public CenterTile() {
-        this.type = "C";
-        this.ePath = true;
+public class ESideTile extends MazeTile {
+    public ESideTile() {
+        this.type = "E";
+        this.ePath = false;
         this.sPath = true;
         this.nPath = true;
         this.wPath = true;
+    }
+
+    @Override
+    public String getColor() {
+        return super.getColor();
+    }
+
+    @Override
+    public void setColor(String color) {
+        super.setColor(color);
     }
 
     @Override
@@ -57,15 +67,5 @@ public class CenterTile extends MazeTile{
     @Override
     public void setwPath(boolean wPath) {
         super.setwPath(wPath);
-    }
-
-    @Override
-    public String getColor() {
-        return super.getColor();
-    }
-
-    @Override
-    public void setColor(String color) {
-        super.setColor(color);
     }
 }

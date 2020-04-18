@@ -1,12 +1,12 @@
-package com;
+package com.maze;
 
-public class SSideTile extends MazeTile {
-    public SSideTile() {
-        this.type = "S";
+public class WSideTile extends MazeTile{
+    public WSideTile() {
+        this.type = "W";
         this.ePath = true;
-        this.sPath = false;
+        this.sPath = true;
         this.nPath = true;
-        this.wPath = true;
+        this.wPath = false;
     }
 
     @Override

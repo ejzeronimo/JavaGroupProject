@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - GameDriver",
+            "request": "launch",
+            "mainClass": "com.GameDriver",
+            "projectName": "JavaGroupProject_8682b9c2"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Driver",
             "request": "launch",
             "mainClass": "com.Driver",
