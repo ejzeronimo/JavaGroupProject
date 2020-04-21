@@ -1,9 +1,8 @@
 package com;
 
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 import com.maze.*;
 import com.visual.*;
 
@@ -22,6 +21,7 @@ public class GameDriver {
         mazePanel.setBounds(100, 100, 960, 960);
         mazePanel.setBackground(Color.gray);
         visualController.getFrame().add(mazePanel);
+        visualController.setVisualMaze(mazePanel);
 
         // add a button in the corner
         JButton button = new JButton("Generate");

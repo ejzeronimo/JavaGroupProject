@@ -2,6 +2,7 @@ package com.visual;
 
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.event.MouseInputAdapter;
 import com.maze.*;
 import java.awt.event.*;
 
@@ -13,9 +14,11 @@ public class VisualController {
     // the parameters
     int width;
     int height;
+    //the objects of the window (arranged by scene)
+    MazePanel visualMaze;
 
     public VisualController(String name, int width, int height) {
-        //params of the window
+        //set params of the window
         this.name = name;
         this.width = width;
         this.height = height;
@@ -24,18 +27,55 @@ public class VisualController {
         this.frame = new Frame(this.name);
         this.frame.setSize(this.width, this.height);
         this.frame.setLayout(null);
-        // frame.setResizable(false);
         this.frame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent windowEvent) {
                 System.exit(0);
+            }
+        });
+        this.frame.addMouseMotionListener(new MouseInputAdapter() {
+            int originalPosX = 0;
+            int originalPosY = 0;
+
+            public void mousePressed(MouseEvent e) {
+                //when pressed get the displacement from 0,0 of the mazepanel
+                this.originalPosX = e.getX();
+                this.originalPosY = e.getY();
+            }
+        
+            public void mouseDragged(MouseEvent e) {
+                updateSize(e);
+            }
+        
+            public void mouseReleased(MouseEvent e) {
+                updateSize(e);
+            }
+        
+            void updateSize(MouseEvent e) {
+                //visualMaze.setLocation((int)visualMaze.getLocation().getX() - (originalPosX - e.getX()), (int)visualMaze.getLocation().getY() - (originalPosY - e.getY()));
+                visualMaze.setLocation(e.getPoint());
+                visualMaze.repaint();
             }
         });
         this.frame.setBackground(Color.darkGray);
         this.frame.setVisible(true);
     }
 
+    public void setVisualMaze(MazePanel v)
+    {
+        this.visualMaze = v;
+    }
+
+    public Frame getFrame() {
+        return this.frame;
+    }
+
+    public void refresh() {
+        this.frame.pack();
+        this.frame.setSize(this.width, this.height);
+    }
+
     // make a maze with the given input and preset parameters
-    public void generateMaze(Maze maze, JPanel container, Color pathColor) {
+    public void generateMaze(Maze maze, MazePanel container, Color pathColor) {
         // empty the container
         container.removeAll();
         // start by getting the container and making a unit size
@@ -87,14 +127,5 @@ public class VisualController {
         // refresh the container
         container.setVisible(false);
         container.setVisible(true);
-    }
-
-    public Frame getFrame() {
-        return this.frame;
-    }
-
-    public void refresh() {
-        this.frame.pack();
-        this.frame.setSize(this.width, this.height);
     }
 }
