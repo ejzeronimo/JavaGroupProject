@@ -7,7 +7,7 @@ public class NWCornerTile extends MazeTile{
         this.ePath = true;
         this.sPath = true;
         this.nPath = false;
-        this.wPath = false;
+        this.wPath = true;
     }
 
     @Override
