@@ -16,11 +16,10 @@ public class GameDriver {
 
         // populate the visual controller and make the window
         visualController = new VisualController("PathFinder", 500, 500);
-        visualController.createWindow();
 
         //add the maze panel
         MazePanel mazePanel = new MazePanel(35);
-        mazePanel.setBounds(150, 150, 450, 450);
+        mazePanel.setBounds(100, 100, 960, 960);
         mazePanel.setBackground(Color.gray);
         visualController.getFrame().add(mazePanel);
 
@@ -30,10 +29,8 @@ public class GameDriver {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // generate a new maze
-                maze = new Maze(15, 15);
-                //MazeTile.printToConsole(maze);
-
-                //try to make a maze yolo
+                maze = new Maze(80, 80);
+                //generate visual maze
                 visualController.generateMaze(maze, mazePanel,Color.lightGray);
             }
         });
