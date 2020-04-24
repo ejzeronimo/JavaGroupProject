@@ -9,7 +9,6 @@ import javax.imageio.*;
 
 //the scene that will first start once the app loads
 public class MenuScene implements Scene {
-
     // scene vars
     int optimalWidth;
     int optimalHeight;
@@ -37,17 +36,6 @@ public class MenuScene implements Scene {
         this.optimalHeight = backgroundPicture.getHeight();
     }
 
-    public void transitionIntoScene() {
-        // fade in from black and load the spash screen
-
-    }
-
-    public void clearScene(VisualController v) {
-        v.getFrame().remove(this.startButton);
-        v.getFrame().remove(this.titleLabel);
-        v.getFrame().remove(this.backLabel);
-    }
-
     public void generateScene(VisualController v) {
         // set up the background image
         this.backLabel = new JLabel(new ImageIcon(backgroundPicture));
@@ -64,6 +52,7 @@ public class MenuScene implements Scene {
         startButton.setFont(new Font("Impact", Font.PLAIN, 40));
         startButton.setBackground(Color.black);
         startButton.setBounds((this.optimalWidth - 150) / 2, (this.optimalHeight - 50) / 2, 150, 50);
+        //make it so that the start button can change to the next scene
         // render everything
         v.getFrame().add(startButton);
         v.getFrame().add(titleLabel);
@@ -71,6 +60,12 @@ public class MenuScene implements Scene {
         v.getFrame().setResizable(false);
         v.setDimensions(this.optimalWidth, this.optimalHeight);
         v.refresh();
+    }
+
+    public void clearScene(VisualController v) {
+        v.getFrame().remove(this.startButton);
+        v.getFrame().remove(this.titleLabel);
+        v.getFrame().remove(this.backLabel);
     }
 
     public void onUpdate() {

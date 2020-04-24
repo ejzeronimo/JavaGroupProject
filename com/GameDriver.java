@@ -2,7 +2,6 @@ package com;
 
 import java.awt.*;
 import javax.swing.*;
-import com.maze.*;
 import com.visual.*;
 import com.visual.scene.*;
 
@@ -11,10 +10,11 @@ public class GameDriver {
     public static void main(String[] args) {
         //populate the essential variable
         VisualController vc = new VisualController("Mazerunner", 500, 500);
-        TestScene t = new TestScene();
-        MenuScene m = new MenuScene();
+        //the global scenes
+        MenuScene menuScene = new MenuScene();
+        LoadingScene levelScene = new LoadingScene();
+        LevelScene gameScene = new LevelScene();
         //this will
-        vc.setScene(m);
-        //vc.setScene(t);
+        vc.setScene(menuScene);
     }
 }

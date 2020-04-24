@@ -6,20 +6,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class TestScene implements Scene {
+public class LevelScene implements Scene {
 
     MazePanel testMaze;
     JButton mazeGenerationButton;
     Maze maze = new Maze(10, 10);
 
-    public TestScene()
+    public LevelScene()
     {
 
     }
 
-    public void transitionIntoScene() {
-
-    }
 
     public void generateScene(VisualController v) {
         // add the maze panel
