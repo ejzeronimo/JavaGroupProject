@@ -4,6 +4,8 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
 import com.maze.*;
+import com.visual.scene.Scene;
+
 import java.awt.event.*;
 
 //the controll for the actual looks of the GUI
@@ -14,11 +16,9 @@ public class VisualController {
     // the parameters
     int width;
     int height;
-    //the objects of the window (arranged by scene)
-    MazePanel visualMaze;
 
     public VisualController(String name, int width, int height) {
-        //set params of the window
+        // set params of the window
         this.name = name;
         this.width = width;
         this.height = height;
@@ -33,40 +33,24 @@ public class VisualController {
             }
         });
         this.frame.addMouseMotionListener(new MouseInputAdapter() {
-            int originalPosX = 0;
-            int originalPosY = 0;
 
-            public void mousePressed(MouseEvent e) {
-                //when pressed get the displacement from 0,0 of the mazepanel
-                this.originalPosX = e.getX();
-                this.originalPosY = e.getY();
-            }
-        
-            public void mouseDragged(MouseEvent e) {
-                updateSize(e);
-            }
-        
-            public void mouseReleased(MouseEvent e) {
-                updateSize(e);
-            }
-        
-            void updateSize(MouseEvent e) {
-                //visualMaze.setLocation((int)visualMaze.getLocation().getX() - (originalPosX - e.getX()), (int)visualMaze.getLocation().getY() - (originalPosY - e.getY()));
-                visualMaze.setLocation(e.getPoint());
-                visualMaze.repaint();
-            }
         });
         this.frame.setBackground(Color.darkGray);
         this.frame.setVisible(true);
     }
 
-    public void setVisualMaze(MazePanel v)
-    {
-        this.visualMaze = v;
-    }
-
     public Frame getFrame() {
         return this.frame;
+    }
+
+    public void setDimensions(int w, int h)
+    {
+        this.width = w;
+        this.height = h;
+    }
+
+    public void setScene(Scene s) {
+        s.generateScene(this);
     }
 
     public void refresh() {
@@ -116,14 +100,13 @@ public class VisualController {
                             unitSizeHeight);
                 }
                 if (template[i][j].getColor().equals("\u001B[34m")) {
-                    vertical.setBackground(Color.blue);
-                    horizontal.setBackground(Color.blue);
+                    //vertical.setBackground(Color.blue);
+                    //horizontal.setBackground(Color.blue);
                 }
                 container.add(vertical);
                 container.add(horizontal);
             }
         }
-
         // refresh the container
         container.setVisible(false);
         container.setVisible(true);
