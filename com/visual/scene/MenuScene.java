@@ -3,9 +3,11 @@ package com.visual.scene;
 import javax.swing.*;
 import com.visual.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.image.*;
 import java.io.*;
 import javax.imageio.*;
+import java.awt.event.*;
 
 //the scene that will first start once the app loads
 public class MenuScene implements Scene {
@@ -13,7 +15,7 @@ public class MenuScene implements Scene {
     int optimalWidth;
     int optimalHeight;
     // actual visual vars
-    JButton startButton;
+    public JButton startButton;
     JLabel backLabel;
     JLabel titleLabel;
     // the images

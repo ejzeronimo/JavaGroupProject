@@ -4,29 +4,38 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
 import com.maze.*;
-import com.visual.scene.Scene;
+import com.visual.scene.*;
 
 import java.awt.event.*;
 
 //the controll for the actual looks of the GUI
 public class VisualController {
     // the visual aspects of the window
+    ImageIcon logo;
     Frame frame;
     String name;
     // the parameters
     int width;
     int height;
+    //the static scenes
+    public LoadingScene loadingScene;
+    public MenuScene menuScene;
+    // the scenes
+    Scene currentScene;
 
     public VisualController(String name, int width, int height) {
         // set params of the window
         this.name = name;
         this.width = width;
         this.height = height;
+        // get the logo
+        this.logo = new ImageIcon("logo.png");
 
         // make the window
         this.frame = new Frame(this.name);
         this.frame.setSize(this.width, this.height);
         this.frame.setLayout(null);
+        this.frame.setIconImage(this.logo.getImage());
         this.frame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent windowEvent) {
                 System.exit(0);
@@ -50,65 +59,26 @@ public class VisualController {
     }
 
     public void setScene(Scene s) {
+        if(this.currentScene != null)
+        {   
+            this.currentScene.clearScene(this);
+        }
+        this.currentScene = s;
         s.generateScene(this);
     }
+
+    public void setLoadingScene(LoadingScene s)
+    {
+        this.loadingScene = s;
+    }
+    
+    public void setMenuScene(MenuScene s)
+    {
+        this.menuScene = s;
+    } 
 
     public void refresh() {
         this.frame.pack();
         this.frame.setSize(this.width, this.height);
-    }
-
-    // make a maze with the given input and preset parameters
-    public void generateMaze(Maze maze, MazePanel container, Color pathColor) {
-        // empty the container
-        container.removeAll();
-        // start by getting the container and making a unit size
-        int unitSizeWidth = container.getWidth() / (maze.getWidth() * 3);
-        int unitSizeHeight = container.getHeight() / (maze.getHeight() * 3);
-        System.out.println(unitSizeWidth);
-        System.out.println(unitSizeHeight);
-        // the maze itself
-        MazeTile[][] template = maze.getMazeArray();
-        // start the iteration!
-        for (int i = 0; i < template.length; i++) {
-            for (int j = 0; j < template[0].length; j++) {
-                // make offsets
-                int horizontalOffset = (j * 3 * unitSizeWidth);
-                int verticalOffset = (i * 3 * unitSizeHeight);
-                // check the vertical direction
-                MazeCube vertical = new MazeCube(pathColor);
-                if (template[i][j].isnPath() && template[i][j].issPath()) {
-                    vertical.setBounds(horizontalOffset + unitSizeWidth, verticalOffset, unitSizeWidth,
-                            unitSizeHeight * 3);
-                } else if (template[i][j].isnPath()) {
-                    vertical.setBounds(horizontalOffset + unitSizeWidth, verticalOffset, unitSizeWidth,
-                            unitSizeHeight * 2);
-                } else if (template[i][j].issPath()) {
-                    vertical.setBounds(horizontalOffset + unitSizeWidth, verticalOffset + unitSizeHeight, unitSizeWidth,
-                            unitSizeHeight * 2);
-                }
-                // check the horizontal direction
-                MazeCube horizontal = new MazeCube(pathColor);
-                if (template[i][j].isePath() && template[i][j].iswPath()) {
-                    horizontal.setBounds(horizontalOffset, verticalOffset + unitSizeHeight, unitSizeWidth * 3,
-                            unitSizeHeight);
-                } else if (template[i][j].isePath()) {
-                    horizontal.setBounds(horizontalOffset + unitSizeWidth, verticalOffset + unitSizeHeight,
-                            unitSizeWidth * 2, unitSizeHeight);
-                } else if (template[i][j].iswPath()) {
-                    horizontal.setBounds(horizontalOffset, verticalOffset + unitSizeHeight, unitSizeWidth * 2,
-                            unitSizeHeight);
-                }
-                if (template[i][j].getColor().equals("\u001B[34m")) {
-                    //vertical.setBackground(Color.blue);
-                    //horizontal.setBackground(Color.blue);
-                }
-                container.add(vertical);
-                container.add(horizontal);
-            }
-        }
-        // refresh the container
-        container.setVisible(false);
-        container.setVisible(true);
     }
 }

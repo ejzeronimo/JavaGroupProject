@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 //a JPanel extended for some more features
 public class MazePanel extends JPanel {
 
-    public MazePanel(int radius) {
+    public MazePanel() {
         super();
         setLayout(null);
         //backgroundColor = bgColor;

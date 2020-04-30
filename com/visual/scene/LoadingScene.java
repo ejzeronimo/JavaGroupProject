@@ -11,22 +11,22 @@ public class LoadingScene implements Scene {
     //the visual objects
     JLabel loadingAnimation;
     //the loading gif
-    BufferedImage loadingGif;
+    ImageIcon loadingGif;
 
     public LoadingScene() {
+
+        loadingGif = new ImageIcon(this.getClass().getResource("./../../../loadingGif.gif"));
         // set the loading gif
-        try {
-            loadingGif = ImageIO.read(new File("loadingGif.png"));
-        } catch (IOException e) {
-        }
     }
 
     public void generateScene(VisualController v) {
         //set the fram color to black bc why not
         v.getFrame().setBackground(Color.black);
         // set up the loading image
-        this.loadingAnimation = new JLabel(new ImageIcon(loadingGif));
-        loadingAnimation.setBounds(v.getFrame().getWidth() - loadingGif.getWidth() - 5, v.getFrame().getHeight() - loadingGif.getHeight() - 5, loadingGif.getWidth(), loadingGif.getHeight());
+        this.loadingAnimation = new JLabel();
+        //this.loadingAnimation.setDoubleBuffered(true);
+        this.loadingAnimation.setIcon(loadingGif);
+        this.loadingAnimation.setBounds((v.getFrame().getWidth() - loadingGif.getIconWidth())/2, (v.getFrame().getHeight() - loadingGif.getIconHeight()) /2, loadingGif.getIconWidth(), loadingGif.getIconHeight());
         //add and refresh the frame
         v.getFrame().add(loadingAnimation);
         v.refresh();
@@ -34,11 +34,10 @@ public class LoadingScene implements Scene {
 
     public void clearScene(VisualController v) {
         v.getFrame().remove(this.loadingAnimation);
-
     }
 
     public void onUpdate() {
-        //we will increment through this as the scene loads
+        this.loadingAnimation.paint(this.loadingAnimation.getGraphics());
     }
 
 }
