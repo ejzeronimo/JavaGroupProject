@@ -1,11 +1,9 @@
 package com;
 
-import com.maze.*;
 import com.visual.scene.*;
 
 public class SceneUpdateThread implements Runnable {
-
-    Scene s;
+    private Scene s;
 
     public SceneUpdateThread() {
     }
@@ -21,5 +19,4 @@ public class SceneUpdateThread implements Runnable {
     public void setScene(Scene s) {
         this.s = s;
     }
-
 }

@@ -3,11 +3,9 @@ package com.visual.scene;
 import javax.swing.*;
 import com.visual.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.image.*;
 import java.io.*;
 import javax.imageio.*;
-import java.awt.event.*;
 
 //the scene that will first start once the app loads
 public class MenuScene implements Scene {
@@ -15,7 +13,7 @@ public class MenuScene implements Scene {
     int optimalWidth;
     int optimalHeight;
     // actual visual vars
-    public JButton startButton;
+    public JButton startButton;//public so the driver can add a listener
     JLabel backLabel;
     JLabel titleLabel;
     // the images
@@ -26,16 +24,12 @@ public class MenuScene implements Scene {
         // set the background image
         try {
             backgroundPicture = ImageIO.read(new File("rainbowMaze.png"));
-        } catch (IOException e) {
-        }
-        // set the title image
-        try {
             titlePicture = ImageIO.read(new File("finalTitle.png"));
         } catch (IOException e) {
         }
         // set the default width and height
-        this.optimalWidth = backgroundPicture.getWidth();
-        this.optimalHeight = backgroundPicture.getHeight();
+        optimalWidth = backgroundPicture.getWidth();
+        optimalHeight = backgroundPicture.getHeight();
     }
 
     public void generateScene(VisualController v) {
@@ -44,8 +38,8 @@ public class MenuScene implements Scene {
         backLabel.setBounds(0, 0, backgroundPicture.getWidth(), backgroundPicture.getHeight());
         // set up the title image
         this.titleLabel = new JLabel(new ImageIcon(titlePicture));
-        titleLabel.setBounds((this.optimalWidth - titlePicture.getWidth()) / 2,
-                (this.optimalHeight - titlePicture.getHeight()) / 3, titlePicture.getWidth(), titlePicture.getHeight());
+        titleLabel.setBounds((optimalWidth - titlePicture.getWidth()) / 2,
+                (optimalHeight - titlePicture.getHeight()) / 3, titlePicture.getWidth(), titlePicture.getHeight());
         titleLabel.setBackground(Color.white);
         // set up the start button
         this.startButton = new JButton("Play");
@@ -53,14 +47,14 @@ public class MenuScene implements Scene {
         startButton.setForeground(Color.white);
         startButton.setFont(new Font("Impact", Font.PLAIN, 40));
         startButton.setBackground(Color.black);
-        startButton.setBounds((this.optimalWidth - 150) / 2, (this.optimalHeight - 50) / 2, 150, 50);
-        //make it so that the start button can change to the next scene
+        startButton.setBounds((optimalWidth - 150) / 2, (optimalHeight - 50) / 2, 150, 50);
+        // make it so that the start button can change to the next scene
         // render everything
         v.getFrame().add(startButton);
         v.getFrame().add(titleLabel);
         v.getFrame().add(backLabel);
         v.getFrame().setResizable(false);
-        v.setDimensions(this.optimalWidth, this.optimalHeight);
+        v.setDimensions(optimalWidth, optimalHeight);
         v.refresh();
     }
 
