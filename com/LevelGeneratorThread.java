@@ -46,7 +46,7 @@ public class LevelGeneratorThread implements Runnable {
                     GameDriver.levelComplexity++;
                 }
                 // choose a ratio
-                double ratio = Math.random() * 2;
+                double ratio = Math.random() * 2.5;
                 // start generation after the thread has been made
                 currentLevel = new LevelScene(vc, GameDriver.levelComplexity, (float) Math.max(1, ratio), Color.white,
                         rainbow[(int) (Math.random() * 7)], Color.black);

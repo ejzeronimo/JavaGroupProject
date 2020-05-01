@@ -47,11 +47,10 @@ public class LevelScene implements Scene {
         mazePanel.setSize(panelWidth, panelHeight);
         // add the cursor
         mazePanel.add(mazeRunner);
-        mazeRunner.setLocation(mazePanel.getWidth() - (int) (unitSizeWidth * .75),
-                mazePanel.getHeight() - (int) (unitSizeWidth * 1.75));
+        mazeRunner.setLocation((int) (unitSizeWidth * .25), (int) (unitSizeWidth * 1.25));
         // add the end goal
         this.endGoal = new MazeCube(cursor);
-        endGoal.setBounds(0, unitSizeHeight, unitSizeWidth, unitSizeHeight);
+        endGoal.setBounds(panelWidth - unitSizeWidth, panelHeight - 2 * unitSizeHeight, unitSizeWidth, unitSizeHeight);
         mazePanel.add(endGoal);
         // generate the maze
         this.generateMaze(this.maze, this.mazePanel, path);
