@@ -14,6 +14,7 @@ public class MenuScene implements Scene {
     int optimalHeight;
     // actual visual vars
     public JButton startButton;// public so the driver can add a listener
+    public JTextField startComplexity;
     JLabel backLabel;
     JLabel titleLabel;
     // the images
@@ -48,8 +49,15 @@ public class MenuScene implements Scene {
         startButton.setFont(new Font("Impact", Font.PLAIN, 40));
         startButton.setBackground(Color.black);
         startButton.setBounds((optimalWidth - 150) / 2, (optimalHeight - 50) / 2, 150, 50);
-        // make it so that the start button can change to the next scene
+        // make the complexity button
+        this.startComplexity = new JTextField("5");
+        startComplexity.setHorizontalAlignment(JTextField.CENTER);
+        startComplexity.setForeground(Color.white);
+        startComplexity.setFont(new Font("Impact", Font.PLAIN, 40));
+        startComplexity.setBackground(Color.black);
+        startComplexity.setBounds((optimalWidth - 150) / 2, (optimalHeight - 50) / 2 + 70, 150, 50);
         // render everything
+        v.getFrame().add(startComplexity);
         v.getFrame().add(startButton);
         v.getFrame().add(titleLabel);
         v.getFrame().add(backLabel);
@@ -59,6 +67,7 @@ public class MenuScene implements Scene {
     }
 
     public void clearScene(VisualController v) {
+        v.getFrame().remove(this.startComplexity);
         v.getFrame().remove(this.startButton);
         v.getFrame().remove(this.titleLabel);
         v.getFrame().remove(this.backLabel);

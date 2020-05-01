@@ -22,6 +22,11 @@ public class GameDriver {
         vc.setScene(menuScene);
         menuScene.startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                if (Integer.parseInt(menuScene.startComplexity.getText()) <= 70) {
+                    GameDriver.levelComplexity = Integer.parseInt(menuScene.startComplexity.getText());
+                } else {
+                    GameDriver.levelComplexity = 5;
+                }
                 // start the game with the default level complexity
                 GameDriver.startGame(vc);
             }

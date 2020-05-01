@@ -1,6 +1,7 @@
 package com.visual.scene;
 
 import java.awt.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 import javax.swing.*;
 import com.visual.*;
 
@@ -10,7 +11,8 @@ public class LoadingScene implements Scene {
     // the loading gif
     ImageIcon loadingGif;
     // boolean flag
-    boolean isToast = false;
+    // public var
+    AtomicBoolean isToast = new AtomicBoolean(false);
 
     public LoadingScene() {
 
@@ -19,6 +21,7 @@ public class LoadingScene implements Scene {
     }
 
     public void generateScene(VisualController v) {
+        setToast(true);
         // set the fram color to black bc why not
         v.getFrame().setBackground(Color.black);
         // set up the loading image
@@ -34,13 +37,23 @@ public class LoadingScene implements Scene {
     }
 
     public void clearScene(VisualController v) {
-        isToast = true;
+        this.setToast(true);
         v.getFrame().remove(this.loadingAnimation);
     }
 
+    public boolean getToast() {
+        return this.isToast.get();
+    }
+
+    public void setToast(boolean b) {
+        this.isToast.set(b);
+    }
+
     public void onUpdate() {
-        if (this.loadingAnimation != null && !isToast) {
+        try {
             this.loadingAnimation.paint(this.loadingAnimation.getGraphics());
+        } catch (NullPointerException e) {
+
         }
     }
 

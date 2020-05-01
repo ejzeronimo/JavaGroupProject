@@ -65,7 +65,7 @@ public class LevelScene implements Scene {
         int channelAmountWidth = (this.maze.getWidth() * 3);
         int channelAmountHeight = (this.maze.getHeight() * 3);
         // begin calc for best size
-        for (int i = 4; i < 21; i++) {
+        for (int i = 1; i < 21; i++) {
             if ((channelAmountWidth * i <= maxWidth) && (channelAmountHeight * i <= maxHeight)) {
                 // check to see if larger than current unitsize
                 if ((i > unitSizeWidth) && (i > unitSizeHeight)) {
@@ -119,6 +119,7 @@ public class LevelScene implements Scene {
         });
         // add to the scene
         v.getFrame().add(this.mazePanel);
+        v.getFrame().setBackground(cursor);
         v.setDimensions(v.getFrame().getWidth(), v.getFrame().getHeight());
         v.refresh();
     }

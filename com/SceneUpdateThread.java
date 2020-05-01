@@ -10,8 +10,10 @@ public class SceneUpdateThread implements Runnable {
 
     public void run() {
         while (true) {
-            if (s != null) {
+            try {
                 s.onUpdate();
+            } catch (NullPointerException e) {
+
             }
         }
     }
