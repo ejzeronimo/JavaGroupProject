@@ -67,9 +67,9 @@ public class VisualController {
     }
 
     public void refresh() {
-        //this.frame.setMinimumSize(frame.getSize());
+        // this.frame.setMinimumSize(frame.getSize());
         this.frame.pack();
-        //this.frame.setMinimumSize(null);
+        // this.frame.setMinimumSize(null);
         this.frame.setSize(this.width, this.height);
     }
 }

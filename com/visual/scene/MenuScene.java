@@ -13,7 +13,7 @@ public class MenuScene implements Scene {
     int optimalWidth;
     int optimalHeight;
     // actual visual vars
-    public JButton startButton;//public so the driver can add a listener
+    public JButton startButton;// public so the driver can add a listener
     JLabel backLabel;
     JLabel titleLabel;
     // the images

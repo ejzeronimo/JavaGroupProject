@@ -1,9 +1,6 @@
 package com;
 
 import java.awt.Color;
-
-import javax.swing.text.AttributeSet.ColorAttribute;
-
 import com.visual.*;
 import com.visual.scene.*;
 
@@ -13,16 +10,8 @@ public class LevelGeneratorThread implements Runnable {
     LevelScene currentLevel;
     Thread thread;
     SceneUpdateThread sceneThread;
-    Color[] rainbow = {
-        Color.red,
-        Color.orange,
-        Color.yellow,
-        Color.green,
-        Color.blue,
-        Color.pink,
-        Color.magenta,
-        Color.cyan
-    };
+    Color[] rainbow = { Color.red, Color.orange, Color.yellow, Color.green, Color.blue, Color.pink, Color.magenta,
+            Color.cyan };
 
     public LevelGeneratorThread(VisualController v) {
         this.vc = v;
@@ -32,7 +21,7 @@ public class LevelGeneratorThread implements Runnable {
     }
 
     public void run() {
-        //just for kicks
+        // just for kicks
         vc.getFrame().setResizable(true);
         // set both the screen and thread to the loading scene
         vc.setScene(vc.loadingScene);
@@ -53,14 +42,14 @@ public class LevelGeneratorThread implements Runnable {
                 sceneThread.setScene(vc.loadingScene);
                 vc.setScene(vc.loadingScene);
                 // up the complexity
-                if(GameDriver.levelComplexity <= 70)
-                {
+                if (GameDriver.levelComplexity <= 70) {
                     GameDriver.levelComplexity++;
                 }
                 // choose a ratio
                 double ratio = Math.random() * 4;
                 // start generation after the thread has been made
-                currentLevel = new LevelScene(vc, GameDriver.levelComplexity, (float) Math.max(.5, ratio), Color.white, rainbow[(int)(Math.random() * 7)], Color.black);
+                currentLevel = new LevelScene(vc, GameDriver.levelComplexity, (float) Math.max(.5, ratio), Color.white,
+                        rainbow[(int) (Math.random() * 7)], Color.black);
                 // move to game scene
                 thread.interrupt();
                 sceneThread.setScene(currentLevel);

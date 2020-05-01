@@ -9,7 +9,7 @@ public class LoadingScene implements Scene {
     JLabel loadingAnimation;
     // the loading gif
     ImageIcon loadingGif;
-    //boolean flag
+    // boolean flag
     boolean isToast = false;
 
     public LoadingScene() {

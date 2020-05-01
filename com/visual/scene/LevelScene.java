@@ -29,7 +29,7 @@ public class LevelScene implements Scene {
     // public var
     AtomicBoolean isBeaten = new AtomicBoolean(false);
 
-    public LevelScene(VisualController v , int complexity, float aspect, Color path, Color cursor, Color background) {
+    public LevelScene(VisualController v, int complexity, float aspect, Color path, Color cursor, Color background) {
         // set the params
         this.background = background;
         this.path = path;
