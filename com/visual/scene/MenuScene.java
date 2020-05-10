@@ -24,8 +24,8 @@ public class MenuScene implements Scene {
     public MenuScene() {
         // set the background image
         try {
-            backgroundPicture = ImageIO.read(new File("rainbowMaze.png"));
-            titlePicture = ImageIO.read(new File("finalTitle.png"));
+            backgroundPicture = ImageIO.read(this.getClass().getResource("/images/rainbowMaze.png"));
+            titlePicture = ImageIO.read(this.getClass().getResource("/images/finalTitle.png"));
         } catch (IOException e) {
         }
         // set the default width and height

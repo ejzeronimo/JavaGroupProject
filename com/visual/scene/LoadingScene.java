@@ -16,7 +16,7 @@ public class LoadingScene implements Scene {
 
     public LoadingScene() {
 
-        loadingGif = new ImageIcon(this.getClass().getResource("./../../../loadingGif.gif"));
+        loadingGif = new ImageIcon(this.getClass().getResource("/images/loadingGif.gif"));
         // set the loading gif
     }
 

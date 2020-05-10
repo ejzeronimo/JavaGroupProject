@@ -26,7 +26,7 @@ public class VisualController {
         this.width = width;
         this.height = height;
         // get the logo
-        logo = new ImageIcon("logo.png");
+        logo = new ImageIcon(this.getClass().getResource("/images/logo.png"));
         // make the window
         this.frame = new Frame(this.name);
         frame.setSize(this.width, this.height);

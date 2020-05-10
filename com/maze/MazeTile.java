@@ -19,7 +19,7 @@ public abstract class MazeTile {
         } else if (!tile.nPath && tile.ePath && tile.sPath && tile.wPath) {
             return "┬";
         } else if (!tile.nPath && !tile.ePath && tile.wPath && tile.sPath) {
-            return "┐";
+            return "F";
         } else if (!tile.wPath && tile.nPath && tile.ePath && tile.sPath) {
             return "├";
         } else if (tile.nPath && tile.ePath && tile.sPath && tile.wPath) {
@@ -41,7 +41,7 @@ public abstract class MazeTile {
         } else if (!tile.nPath && !tile.ePath && !tile.wPath && tile.sPath) {
             return "↓";
         } else if (!tile.nPath && !tile.ePath && !tile.sPath && tile.wPath) {
-            return "←";
+            return "F";
         } else if (!tile.ePath && !tile.sPath && !tile.wPath && tile.nPath) {
             return "↑";
         } else if (!tile.nPath && !tile.sPath && !tile.wPath && tile.ePath) {
